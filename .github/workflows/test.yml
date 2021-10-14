@@ -1,0 +1,10 @@
+on:
+  push:
+jobs:
+  do_arm64:
+    name: blar
+    runs-on: [self-hosted, woa]
+    steps:
+    - run: |
+        echo %PROCESSOR_ARCHITECTURE%
+        c:\python397_arm64\python -c "import platform; print(platform.processor())"
