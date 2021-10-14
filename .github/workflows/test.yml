@@ -1,13 +1,15 @@
 on:
   push:
+defaults:
+  run:
+    shell: pwsh
 jobs:
   do_arm64:
     name: blar
     runs-on: [self-hosted, woa]
     steps:
+    - uses: actions/checkout@v2
     - run: |
-        Write-Output "hello from $env:PROCESSOR_ARCHITECTURE"  # AMD64, since we launched from an x64 runner process
+        Write-Output "hello from $env:PROCESSOR_ARCHITECTURE"  
         $out = c:\python397_arm64\python -c "import platform; print(platform.processor())"
-        Write-Output "hello from Python $out"  # yay, ARM64
-      shell: pwsh  
-
+        Write-Output "hello from Python $out"
