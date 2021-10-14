@@ -6,6 +6,7 @@ jobs:
     runs-on: [self-hosted, woa]
     steps:
     - run: |
-        c:\windows\sysnative\cmd.exe /c "echo ^%PROCESSOR_ARCHITECTURE^%"
-        c:\python397_arm64\python -c "import platform; print(platform.processor())"
+        Write-Output "hello from $env:PROCESSOR_ARCHITECTURE"  # AMD64, since we launched from an x64 runner process
+        c:\python397_arm64\python -c "import platform; print(platform.processor())"  # yay, ARM64
+        
 
