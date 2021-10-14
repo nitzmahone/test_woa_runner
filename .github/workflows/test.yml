@@ -6,7 +6,7 @@ jobs:
     runs-on: [self-hosted, woa]
     steps:
     - run: |
-        echo %PROCESSOR_ARCHITECTURE%
+        c:\windows\sysnative\cmd.exe /c "echo ^%PROCESSOR_ARCHITECTURE^%"
         c:\python397_arm64\python -c "import platform; print(platform.processor())"
-      shell: c:\windows\sysnative\cmd.exe /D /E:ON /V:OFF /S /C "CALL "{0}""
+      shell: cmd
 
